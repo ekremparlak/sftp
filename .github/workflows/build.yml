@@ -48,12 +48,6 @@ jobs:
       - name: Test alpine image
         run: tests/run testimage:alpine
 
-      - name: Verify signature
-        if: github.ref == 'refs/heads/master'
-        uses: atmoz/git-verify-ref@master
-        with:
-          import-github-users: ekremparlak
-
       - name: Login to Docker Hub
         uses: docker/login-action@v1
         with:
@@ -78,6 +72,7 @@ jobs:
           install: true
 
       - name: Build debian image
+        if: github.ref == 'refs/heads/master'
         run: |
           docker build . \
             --pull=true \
@@ -90,7 +85,8 @@ jobs:
             --label="org.opencontainers.image.revision=$GITHUB_SHA" \
             --label="org.opencontainers.image.created=$(date --rfc-3339=seconds)" --push
 
-      - name: Build alpine image
+      - name: Build alpine image,
+        if: github.ref == 'refs/heads/master'
         run: |
           docker build . \
             --pull=true \
