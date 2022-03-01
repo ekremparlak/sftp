@@ -52,7 +52,7 @@ jobs:
         if: github.ref == 'refs/heads/master'
         uses: atmoz/git-verify-ref@master
         with:
-          import-github-users: eparlak
+          import-github-users: ekremparlak
 
       - name: Login to Docker Hub
         uses: docker/login-action@v1
