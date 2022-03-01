@@ -90,5 +90,5 @@ jobs:
           docker push --all-tags $IMAGE_NAME
           docker push ghcr.io/$GITHUB_REPOSITORY/alpine 
           docker push ghcr.io/$GITHUB_REPOSITORY/debian
-          docker logout docker.pkg.github.com
+          docker logout docker.pkg.github.com 
 
